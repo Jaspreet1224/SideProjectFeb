@@ -13,23 +13,39 @@
         font-optical-sizing: auto;
         font-weight: 100;
         font-style: normal;
-        background: linear-gradient(135deg, #f5c6cb, #f8d7da, #ffeeba);
+        background: linear-gradient(135deg, #eca1a9, #ea3846, #efdb9e);
 
 
     }
     .card{
-        backgorund: white; padding: 30px; border-radius: 20px;
+        background: rgb(12, 8, 226); padding: 30px; border-radius: 20px;
         box-shadow: 0 10px 30px rgba(239, 25, 25, 0.2);
         text-align: center; min-width: (520px, 92vw);
     }
     h1{
-        
+        font-size: 30px; margin: 0 0 10px;
+        font-family: "Fleur De Leah", cursive;
+        font-weight: 400;
+        font-style: normal;
     }
+    p{
+        font-size: 18px; margin: 0 0 10px;
+        font-family: "Fleur De Leah", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    .buttons{
+        margin: 20px; display: flex; gap:15px; justify-content: center;
+    }
+    a, button{
+        background-color: #f5f2f2; border: rgb(241, 178, 6); padding: 12px 18px;
+        border-radius: 10px; font-size: 18px; cursor: crosshair; box-shadow:0 8px 18px rgba(0,0,0,.12);
+    }
+    .yes{ background:#ff3b7a; color:white; }
+    .no{ background:#f2f2f2; }
+    
+    
     </style>
-
-
-
-
 
 
 
@@ -38,6 +54,16 @@
 <body>
     <div class = "card">
         <div style="font-size:56px">💖</div>
-        <h1>Will You Be My Valentine?</h1>
         <p>Hey <em>Gina</em>, this website is all about <em>YOU</em></p>
-    </div></body>
+        <p>I made it to ask you a very important question...</p>
+        <h1>Will You Be My Valentine?</h1>
+
+        <div class= "buttons" >
+            <a href = "yes.html" class ="Yes 💕">Yes 💕 </a>
+
+            <button class="no" onclick="UMMMM('Wrong answer!!! Try again')"> No
+            </button>
+        </div>
+    </div>
+</body>
+</html>
