@@ -81,13 +81,16 @@
     }
     .yes{ background:var(--yes); color:var(--yes-text); }
     .no{
-        background:var(--no); color:var(--no-text);
-        transform: translate(var(--move-x, 0px), var(--move-y, 0px));
+        background:var(--no);
+        color:var(--no-text);
+        position: relative;
+        transform: translate(var(--no-x, 0px), var(--no-y, 0px));
         transition: transform 0.12s ease;
     }
     .why-btn{
         background: #ffeef6;
         color: #7b1e52;
+        margin-bottom: 8px;
     }
     .like-note{
         margin: 14px auto 0;
@@ -128,13 +131,12 @@
         <h1>Will You Be My Valentine?</h1>
         <p id="val-timer" class="timer">Loading Valentine timer...</p>
 
+        <button class="why-btn" id="why-btn" type="button">Why I Like You 💌</button>
         <div class= "buttons" >
             <a href = "yes.html" class ="yes">Yes Ofc 💕 </a>
 
-            <button class="no" type="button" aria-label="No">No 😡
-            </button>
+            <a href="are-you-serious.html" class="no" aria-label="No">No 😡</a>
         </div>
-        <button class="why-btn" id="why-btn" type="button">Why I Like You 💌</button>
         <p id="like-note" class="like-note">
             First of all I want to say that you are the most amazing thing that happened to me. I am so thankful to have you in my life and I know
             we do not get to spend alot of time together right now but the momments that we are together are always worth the wait. I love seeing 
@@ -155,8 +157,15 @@
         gCursor.className = "g-cursor";
         gCursor.textContent = "G";
         document.body.appendChild(gCursor);
-        let x = 0;
-        let y = 0;
+        let dodgeActive = true;
+
+        function setDodgeMode(isActive) {
+            dodgeActive = isActive;
+            if (!isActive) {
+                noButton.style.setProperty("--no-x", "0px");
+                noButton.style.setProperty("--no-y", "0px");
+            }
+        }
 
         function updateValentineTimer() {
             const now = new Date();
@@ -176,22 +185,6 @@
             timer.textContent = `Countdown to Valentine's Day: ${days}d ${hours}h ${mins}m ${secs}s`;
         }
 
-        function moveNoButton() {
-            // Keep movement playful but within a reasonable range.
-            x = (Math.random() - 0.5) * 260;
-            y = (Math.random() - 0.5) * 140;
-            noButton.style.setProperty("--move-x", `${x}px`);
-            noButton.style.setProperty("--move-y", `${y}px`);
-        }
-
-        noButton.addEventListener("mouseenter", moveNoButton);
-        noButton.addEventListener("focus", moveNoButton);
-        noButton.addEventListener("touchstart", moveNoButton);
-        noButton.addEventListener("click", (event) => {
-            event.preventDefault();
-            moveNoButton();
-        });
-
         whyButton.addEventListener("click", () => {
             const isHidden = likeNote.style.display === "" || likeNote.style.display === "none";
             likeNote.style.display = isHidden ? "block" : "none";
@@ -202,18 +195,30 @@
             gCursor.style.left = `${event.clientX}px`;
             gCursor.style.top = `${event.clientY}px`;
 
+            if (!dodgeActive) return;
+
             const rect = noButton.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             const distance = Math.hypot(event.clientX - centerX, event.clientY - centerY);
 
             if (distance < 120) {
-                moveNoButton();
+                const moveX = (Math.random() - 0.5) * 220;
+                const moveY = (Math.random() - 0.5) * 120;
+                noButton.style.setProperty("--no-x", `${moveX}px`);
+                noButton.style.setProperty("--no-y", `${moveY}px`);
             }
         });
 
         updateValentineTimer();
         setInterval(updateValentineTimer, 1000);
+
+        // Move away for 10 seconds, pause for 5 seconds, then repeat.
+        setDodgeMode(true);
+        setInterval(() => {
+            setDodgeMode(false);
+            setTimeout(() => setDodgeMode(true), 5000);
+        }, 15000);
     </script>
 </body>
 </html>
