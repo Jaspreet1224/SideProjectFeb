@@ -6,6 +6,19 @@
     <meta name="viewport" content="width= device-width , intitial-scale=0.1">
 
     <style> 
+    :root{
+        --bg-start: #ffd6e0;
+        --bg-mid: #ff8fb1;
+        --bg-end: #ffe7b8;
+        --card: #d63384;
+        --text-on-card: #fff7fb;
+        --yes: #ffe08a;
+        --yes-text: #5b1a42;
+        --no: #b9d5ff;
+        --no-text: #19335a;
+        --border: #8e5ccf;
+        --cursor: #ffe08a;
+    }
     body{
         margin:0; min-height: 100vh;
         display: flex; align-items: center; justify-content: center;
@@ -13,14 +26,16 @@
         font-optical-sizing: auto;
         font-weight: 100;
         font-style: normal;
-        background: linear-gradient(135deg, #eca1a9, #ea3846, #efdb9e);
+        background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+        cursor: none;
 
 
     }
     .card{
-        background: rgb(12, 8, 226); padding: 30px; border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(239, 25, 25, 0.2);
+        background: var(--card); padding: 30px; border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(140, 20, 80, 0.35);
         text-align: center; min-width: (520px, 92vw);
+        color: var(--text-on-card);
     }
     h1{
         font-size: 30px; margin: 0 0 10px;
@@ -34,15 +49,69 @@
         font-weight: 400;
         font-style: normal;
     }
+    .timer{
+        margin: 8px 0 14px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff4cf;
+    }
+    .beating-heart{
+        font-size: 56px;
+        line-height: 1;
+        display: inline-block;
+        animation: heartbeat 0.9s ease-in-out infinite;
+        transform-origin: center;
+    }
+    @keyframes heartbeat{
+        0%, 100% { transform: scale(1); }
+        20% { transform: scale(1.18); }
+        40% { transform: scale(1); }
+        60% { transform: scale(1.15); }
+        80% { transform: scale(1); }
+    }
     .buttons{
         margin: 20px; display: flex; gap:15px; justify-content: center;
+        position: relative;
     }
     a, button{
-        background-color: #f5f2f2; border: rgb(241, 178, 6); padding: 12px 18px;
-        border-radius: 10px; font-size: 18px; cursor: crosshair; box-shadow:0 8px 18px rgba(0,0,0,.12);
+        background-color: #f5f2f2; border: 1px solid var(--border); padding: 12px 18px;
+        border-radius: 10px; font-size: 18px; cursor: none; box-shadow:0 8px 18px rgba(0,0,0,.12);
+        width: 150px; display: inline-flex; align-items: center; justify-content: center;
+        box-sizing: border-box; text-decoration: none;
     }
-    .yes{ background:#ff3b7a; color:white; }
-    .no{ background:#f2f2f2; }
+    .yes{ background:var(--yes); color:var(--yes-text); }
+    .no{
+        background:var(--no); color:var(--no-text);
+        transform: translate(var(--move-x, 0px), var(--move-y, 0px));
+        transition: transform 0.12s ease;
+    }
+    .why-btn{
+        background: #ffeef6;
+        color: #7b1e52;
+    }
+    .like-note{
+        margin: 14px auto 0;
+        max-width: 420px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: rgba(255, 245, 251, 0.92);
+        color: #6a1b49;
+        border: 1px solid #f6bed6;
+        font-size: 18px;
+        display: none;
+    }
+    .g-cursor{
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9999;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--cursor);
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+    }
     
     
     </style>
@@ -53,17 +122,98 @@
 
 <body>
     <div class = "card">
-        <div style="font-size:56px">💖</div>
+        <div class="beating-heart">❤️</div>
         <p>Hey <em>Gina</em>, this website is all about <em>YOU</em></p>
         <p>I made it to ask you a very important question...</p>
         <h1>Will You Be My Valentine?</h1>
+        <p id="val-timer" class="timer">Loading Valentine timer...</p>
 
         <div class= "buttons" >
-            <a href = "yes.html" class ="Yes 💕">Yes 💕 </a>
+            <a href = "yes.html" class ="yes">Yes Ofc 💕 </a>
 
-            <button class="no" onclick="UMMMM('Wrong answer!!! Try again')"> No
+            <button class="no" type="button" aria-label="No">No 😡
             </button>
         </div>
+        <button class="why-btn" id="why-btn" type="button">Why I Like You 💌</button>
+        <p id="like-note" class="like-note">
+            First of all I want to say that you are the most amazing thing that happened to me. I am so thankful to have you in my life and I know
+            we do not get to spend alot of time together right now but the momments that we are together are always worth the wait. I love seeing 
+            you with a smile on your face looking into your welcoming but captivating eyes. You make me feel special and wanted in a way that no one else can. 
+            Even though we sometiumes get into arguments, I know we will end up loving eachother even more. <br>I love you because you are so fun to talk to 
+            and I can be myself arounf you.<br> I love you because you give the best hugs(and massages) ever!<br> I love the reels you send me even though something 
+            they arent as funny as you may think.<br> I love you because your an amazing chef and chef instructor other than when you laugh at  me raging over a 
+            can opener.<br> Also you have to pick YES because even my body loves you so much it got a stye because you had one! <br>So please be my valentine and 
+            pick yes for more surpries. <br>I love you so much Gina! 💕
+        </p>
     </div>
+    <script>
+        const noButton = document.querySelector(".no");
+        const timer = document.querySelector("#val-timer");
+        const whyButton = document.querySelector("#why-btn");
+        const likeNote = document.querySelector("#like-note");
+        const gCursor = document.createElement("div");
+        gCursor.className = "g-cursor";
+        gCursor.textContent = "G";
+        document.body.appendChild(gCursor);
+        let x = 0;
+        let y = 0;
+
+        function updateValentineTimer() {
+            const now = new Date();
+            const year = now.getFullYear();
+            let nextValentines = new Date(year, 1, 14, 0, 0, 0); // Feb = month 1
+
+            if (now > nextValentines) {
+                nextValentines = new Date(year + 1, 1, 14, 0, 0, 0);
+            }
+
+            const diff = nextValentines - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            timer.textContent = `Countdown to Valentine's Day: ${days}d ${hours}h ${mins}m ${secs}s`;
+        }
+
+        function moveNoButton() {
+            // Keep movement playful but within a reasonable range.
+            x = (Math.random() - 0.5) * 260;
+            y = (Math.random() - 0.5) * 140;
+            noButton.style.setProperty("--move-x", `${x}px`);
+            noButton.style.setProperty("--move-y", `${y}px`);
+        }
+
+        noButton.addEventListener("mouseenter", moveNoButton);
+        noButton.addEventListener("focus", moveNoButton);
+        noButton.addEventListener("touchstart", moveNoButton);
+        noButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            moveNoButton();
+        });
+
+        whyButton.addEventListener("click", () => {
+            const isHidden = likeNote.style.display === "" || likeNote.style.display === "none";
+            likeNote.style.display = isHidden ? "block" : "none";
+            whyButton.textContent = isHidden ? "Hide Message 💌" : "Why I Like You 💌";
+        });
+
+        document.addEventListener("mousemove", (event) => {
+            gCursor.style.left = `${event.clientX}px`;
+            gCursor.style.top = `${event.clientY}px`;
+
+            const rect = noButton.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const distance = Math.hypot(event.clientX - centerX, event.clientY - centerY);
+
+            if (distance < 120) {
+                moveNoButton();
+            }
+        });
+
+        updateValentineTimer();
+        setInterval(updateValentineTimer, 1000);
+    </script>
 </body>
 </html>
