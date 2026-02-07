@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Cute We Are Together</title>
+    <style>
+        :root{
+            --bg-start: #ffd6e0;
+            --bg-mid: #ff8fb1;
+            --bg-end: #ffe7b8;
+            --card: #d63384;
+            --text: #fff7fb;
+        }
+        body{
+            margin:0;
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+            font-family: "Dancing Script", cursive;
+        }
+        .card{
+            background: var(--card);
+            color: var(--text);
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(140, 20, 80, 0.35);
+            max-width: 900px;
+            width: 92vw;
+            text-align: center;
+        }
+        h1{
+            margin: 0 0 14px;
+            font-size: 36px;
+        }
+        .wall{
+            margin: 0 auto;
+            padding: 18px;
+            border-radius: 18px;
+            background: #ffffff;
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.08);
+        }
+        .collage{
+            column-count: 5;
+            column-gap: 10px;
+        }
+        .collage img{
+            width: 100%;
+            display: block;
+            margin: 0 0 10px;
+            border-radius: 12px;
+            border: 3px solid #ffffff;
+            box-shadow: 0 8px 18px rgba(0,0,0,.18);
+            background: #f7f7f7;
+            break-inside: avoid;
+        }
+        .collage img:nth-child(odd){ transform: rotate(-1deg); }
+        .collage img:nth-child(even){ transform: rotate(1deg); }
+        @media (max-width: 1000px){
+            .collage{ column-count: 4; }
+        }
+        @media (max-width: 800px){
+            .collage{ column-count: 3; }
+        }
+        @media (max-width: 600px){
+            .collage{ column-count: 2; }
+        }
+        @media (max-width: 480px){
+            .collage{ column-count: 1; }
+        }
+        .note{
+            margin: 12px 0 0;
+            font-size: 18px;
+        }
+        .home{
+            margin-top: 16px;
+            display: inline-flex;
+            align-items:center;
+            justify-content:center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.18);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>How Cute We Are Together 📸</h1>
+        <div class="wall">
+        <div class="collage">
+            <img src="PicturesFebproject/FullSizeRender.png" alt="Photo" />
+            <img src="PicturesFebproject/IMG_1016.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_1360.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3125.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3134.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3148.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3154.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3162.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3168.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3184.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_3235.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_4461.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_5186.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_5539.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_7700.jpg" alt="Photo" />
+            <img src="PicturesFebproject/IMG_7737.PNG" alt="Photo" />
+            
+    </div>
+        <a class="home" href="index.html">Home</a>
+    </div>
+</body>
+</html>

@@ -50,10 +50,15 @@
         font-style: normal;
     }
     .timer{
-        margin: 8px 0 14px;
+        margin: 18px auto 0;
         font-size: 20px;
         font-weight: 700;
         color: #fff4cf;
+        padding: 10px 14px;
+        border-radius: 12px;
+        background: rgba(255, 245, 251, 0.18);
+        border: 1px dashed rgba(255, 245, 251, 0.45);
+        max-width: 420px;
     }
     .beating-heart{
         font-size: 56px;
@@ -87,10 +92,20 @@
         transform: translate(var(--no-x, 0px), var(--no-y, 0px));
         transition: transform 0.12s ease;
     }
+    .why-row{
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+    }
     .why-btn{
         background: #ffeef6;
         color: #7b1e52;
-        margin-bottom: 8px;
+    }
+    .cute-btn{
+        background: #f7e4ff;
+        color: #4b1f66;
     }
     .like-note{
         margin: 14px auto 0;
@@ -126,12 +141,13 @@
 <body>
     <div class = "card">
         <div class="beating-heart">❤️</div>
-        <p>Hey <em>Gina</em>, this website is all about <em>YOU</em></p>
+        <p>Hello <em>Motteya</em>, this website is all about <em>YOU</em></p>
         <p>I made it to ask you a very important question...</p>
         <h1>Will You Be My Valentine?</h1>
-        <p id="val-timer" class="timer">Loading Valentine timer...</p>
-
-        <button class="why-btn" id="why-btn" type="button">Why I Like You 💌</button>
+        <div class="why-row">
+            <button class="why-btn" id="why-btn" type="button">Why I Like You 💌</button>
+            <a class="cute-btn" href="cute-gallery.html">How Cute We Are Together 📸</a>
+        </div>
         <div class= "buttons" >
             <a href = "yes.html" class ="yes">Yes Ofc 💕 </a>
 
@@ -147,6 +163,7 @@
             can opener.<br> Also you have to pick YES because even my body loves you so much it got a stye because you had one! <br>So please be my valentine and 
             pick yes for more surpries. <br>I love you so much Gina! 💕
         </p>
+        <p id="val-timer" class="timer">Loading Valentine timer...</p>
     </div>
     <script>
         const noButton = document.querySelector(".no");

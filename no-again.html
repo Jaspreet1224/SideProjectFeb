@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartbreak</title>
+    <style>
+        :root{
+            --bg: #0a0a12;
+            --fg: #f3e6ff;
+            --accent: #ff4d6d;
+        }
+        body{
+            margin:0;
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: radial-gradient(circle at top, #1a0f24, var(--bg) 70%);
+            color: var(--fg);
+            font-family: "Dancing Script", cursive;
+            overflow: hidden;
+        }
+        .wrap{
+            text-align:center;
+            padding: 20px;
+        }
+        .broken{
+            font-size: 84px;
+            color: var(--accent);
+            text-shadow: 0 10px 30px rgba(255, 77, 109, 0.35);
+            margin: 0 0 16px;
+        }
+        .message{
+            font-size: 26px;
+            color: #e6d6ff;
+            margin: 0 0 18px;
+        }
+
+        .home{
+            margin-top: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--fg);
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .falling{
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .falling img{
+            position: absolute;
+            top: -80px;
+            width: 40px;
+            height: auto;
+            opacity: 0.85;
+            animation: fall linear infinite;
+        }
+        @keyframes fall{
+            to{
+                transform: translateY(120vh);
+            }
+        }
+        .wrap{
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="falling" id="falling"></div>
+    <div class="wrap">
+        <div class="broken">💔</div>
+        <p class="message">I know you didnt love me fr.</p>
+        <a class="home" href="index.html">Home</a>
+    </div>
+    <script>
+        const container = document.getElementById("falling");
+        const imageSrc = "IMG_7698%20Background%20Removed.png";
+        const count = 140;
+
+        for (let i = 0; i < count; i += 1) {
+            const img = document.createElement("img");
+            img.src = imageSrc;
+            img.style.left = `${Math.random() * 100}vw`;
+            img.style.animationDuration = `${6 + Math.random() * 8}s`;
+            img.style.animationDelay = `${Math.random() * 6}s`;
+            img.style.transform = `translateY(${Math.random() * -120}px)`;
+            img.style.width = `${24 + Math.random() * 40}px`;
+            container.appendChild(img);
+        }
+    </script>
+</body>
+</html>
