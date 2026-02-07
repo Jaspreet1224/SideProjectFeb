@@ -20,6 +20,7 @@
             color: var(--fg);
             font-family: "Dancing Script", cursive;
             overflow: hidden;
+            cursor: none;
         }
         .wrap{
             text-align:center;
@@ -74,6 +75,18 @@
             position: relative;
             z-index: 2;
         }
+        .g-cursor{
+            position: fixed;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff4d6d;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+        }
     </style>
 </head>
 <body>
@@ -85,6 +98,10 @@
     </div>
     <script>
         const container = document.getElementById("falling");
+        const gCursor = document.createElement("div");
+        gCursor.className = "g-cursor";
+        gCursor.textContent = "G";
+        document.body.appendChild(gCursor);
         const imageSrc = "IMG_7698%20Background%20Removed.png";
         const count = 140;
 
@@ -98,6 +115,11 @@
             img.style.width = `${24 + Math.random() * 40}px`;
             container.appendChild(img);
         }
+
+        document.addEventListener("mousemove", (event) => {
+            gCursor.style.left = `${event.clientX}px`;
+            gCursor.style.top = `${event.clientY}px`;
+        });
     </script>
 </body>
 </html>
