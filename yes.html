@@ -276,24 +276,36 @@
                 <button class="place-btn" data-target="place-2">Location 2</button>
                 <button class="place-btn" data-target="place-3">Location 3</button>
             </div>
-            <div class="place-card" id="place-1" data-address="3015 Niagara Falls Blvd, Buffalo, NY 14228">
+            <div class="place-card" id="place-1">
                 <div class="place-media">
                     <img src="PicturesFebProject/IMG_3125.jpg" alt="Location 1" />
-                    <iframe title="Location 1 map" loading="lazy"></iframe>
+                    <iframe
+                        title="Location 1 map"
+                        loading="lazy"
+                        src="https://maps.google.com/maps?q=3015%20Niagara%20Falls%20Blvd%2C%20Buffalo%2C%20NY%2014228&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    ></iframe>
                 </div>
                 <p class="place-label">3015 Niagara Falls Blvd, Buffalo, NY 14228</p>
             </div>
-            <div class="place-card" id="place-2" data-address="2002 Annapolis Mall Rd, Annapolis, MD 21401">
+            <div class="place-card" id="place-2">
                 <div class="place-media">
                     <img src="PicturesFebProject/IMG_5186.jpg" alt="Location 2" />
-                    <iframe title="Location 2 map" loading="lazy"></iframe>
+                    <iframe
+                        title="Location 2 map"
+                        loading="lazy"
+                        src="https://maps.google.com/maps?q=2002%20Annapolis%20Mall%20Rd%2C%20Annapolis%2C%20MD%2021401&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    ></iframe>
                 </div>
                 <p class="place-label">2002 Annapolis Mall Rd, Annapolis, MD 21401</p>
             </div>
-            <div class="place-card" id="place-3" data-address="5495-4071 Killian Rd, North Tonawanda, NY 14120">
+            <div class="place-card" id="place-3">
                 <div class="place-media">
                     <img src="PicturesFebProject/de2b132d-4518-4dee-a4db-3aecac791fe8.JPG" alt="Location 3" />
-                    <iframe title="Location 3 map" loading="lazy"></iframe>
+                    <iframe
+                        title="Location 3 map"
+                        loading="lazy"
+                        src="https://maps.google.com/maps?q=5495-4071%20Killian%20Rd%2C%20North%20Tonawanda%2C%20NY%2014120&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    ></iframe>
                 </div>
                 <p class="place-label">5495-4071 Killian Rd, North Tonawanda, NY 14120</p>
             </div>
@@ -328,40 +340,11 @@
 
         const placeButtons = document.querySelectorAll(".place-btn");
         const placeCards = document.querySelectorAll(".place-card");
-
-        function loadMap(card) {
-            if (card.dataset.loaded === "true") return;
-            const address = card.dataset.address;
-            const iframe = card.querySelector("iframe");
-
-            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    if (!data || !data[0]) return;
-                    const lat = parseFloat(data[0].lat);
-                    const lon = parseFloat(data[0].lon);
-                    const delta = 0.02;
-                    const left = lon - delta;
-                    const right = lon + delta;
-                    const top = lat + delta;
-                    const bottom = lat - delta;
-                    const src = `https://www.openstreetmap.org/export/embed.html?bbox=${left}%2C${bottom}%2C${right}%2C${top}&layer=mapnik&marker=${lat}%2C${lon}`;
-                    iframe.src = src;
-                    card.dataset.loaded = "true";
-                })
-                .catch(() => {});
-        }
-
         placeButtons.forEach((btn) => {
             btn.addEventListener("click", () => {
                 const targetId = btn.getAttribute("data-target");
                 placeCards.forEach((card) => {
-                    if (card.id === targetId) {
-                        card.classList.add("active");
-                        loadMap(card);
-                    } else {
-                        card.classList.remove("active");
-                    }
+                    card.classList.toggle("active", card.id === targetId);
                 });
             });
         });
