@@ -64,6 +64,11 @@
             object-fit: cover;
             border-radius: 12px;
         }
+        .between-heart{
+            font-size: 36px;
+            color: #ff1f5a;
+            align-self: center;
+        }
         .confetti{
             position: fixed;
             inset: 0;
@@ -119,6 +124,90 @@
             border: 1px solid rgba(255,255,255,0.6);
             cursor: pointer;
         }
+        .places{
+            margin-top: 18px;
+            padding-top: 6px;
+        }
+        .places h2{
+            margin: 0 0 10px;
+            font-size: 26px;
+            color: #5b1a42;
+        }
+        .place-buttons{
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .place-btn{
+            display: inline-flex;
+            align-items:center;
+            justify-content:center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #f7c4d8;
+            color: #5b1a42;
+            text-decoration: none;
+            font-size: 16px;
+            font-family: inherit;
+            border: 1px solid rgba(255,255,255,0.6);
+            cursor: pointer;
+        }
+        .music-btn{
+            margin-top: 10px;
+            display: inline-flex;
+            align-items:center;
+            justify-content:center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #f7c4d8;
+            color: #5b1a42;
+            text-decoration: none;
+            font-size: 16px;
+            font-family: inherit;
+            border: 1px solid rgba(255,255,255,0.6);
+            cursor: pointer;
+        }
+        .place-card{
+            margin: 12px auto 0;
+            max-width: 700px;
+            padding: 12px;
+            border-radius: 14px;
+            background: #fffaf0;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 10px 24px rgba(0,0,0,.12);
+            display: none;
+        }
+        .place-card.active{ display: block; }
+        .place-media{
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .place-media img{
+            width: 220px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #ffffff;
+            box-shadow: 0 8px 16px rgba(0,0,0,.15);
+            background: #f7f7f7;
+        }
+        .place-media iframe{
+            width: 360px;
+            height: 220px;
+            border: 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,.15);
+            background: #f7f7f7;
+        }
+        .place-label{
+            margin: 10px 0 0;
+            font-size: 16px;
+            color: #5b1a42;
+        }
         .letter{
             margin: 14px auto 0;
             max-width: 520px;
@@ -149,6 +238,7 @@
 </head>
 <body>
     <div class="confetti" id="confetti"></div>
+    <audio id="bg-music" src="Stargaze.mp3" autoplay loop></audio>
     <div class="card content">
         <h1>Happy Valentine's Day <br>My Beautiful Baby</h1>
         <p>I already knew you would say YES because how can you resist! I wrote a little letter below for you. I hope you know that you
@@ -158,6 +248,7 @@
             <div class="photo-card">
                 <img src="IMG_3708.png" alt="Photo 1" />
             </div>
+            <div class="between-heart">❤️</div>
             <div class="photo-card">
                 <img src="IMG_7571.png" alt="Photo 2" />
             </div>
@@ -168,9 +259,46 @@
             Our love for eachother grows everyday and I am so grateful because even though we are so far away we always make it work.
             Our moments together are worth so much more and nothing can compare to the joy I get when I see you. I never ever want to
             think about being without you because you are the first person I think of aftr waking up and the last person I think of before 
-            going to sleep. 
+            going to sleep. I wish i could hug you all the time and kiss you. You are my home when I get to hug you I feel so safe and loved.
+            You are the only girl I want for the rest of my life meri jaan. I cant put into words how much I love you aand think about you on a 
+            daily basis. You are the cutest little baby and I cant wait to have babies with you they will be so cute and we are gonna be such great parents.
+            I cant wait for that chapter of our life. I just want to make so many memories with you, anything we do together will be super fun. <br>
+            Also I had the idea of making this website before you had mentioned it on the phone the other day which was so funny because as you said it I 
+            was working on it. I really hope you like it!<br> Also, GOOD LUCK on your exam this week I know you will do really good on it you have
+            spent so much time learning everything and you are so talented and smart so you will do GREAT!<br> Anyways dont think about that, and tell me what you
+            would do if I was infront of you right now!<br> I love you so so much Gina! <br><br> Love, Jaspreet
 
         </div>
+        <div class="places">
+            <h2>Places We Met 🗺️</h2>
+            <div class="place-buttons">
+                <button class="place-btn" data-target="place-1">Location 1</button>
+                <button class="place-btn" data-target="place-2">Location 2</button>
+                <button class="place-btn" data-target="place-3">Location 3</button>
+            </div>
+            <div class="place-card" id="place-1" data-address="3015 Niagara Falls Blvd, Buffalo, NY 14228">
+                <div class="place-media">
+                    <img src="PicturesFebProject/IMG_3125.jpg" alt="Location 1" />
+                    <iframe title="Location 1 map" loading="lazy"></iframe>
+                </div>
+                <p class="place-label">3015 Niagara Falls Blvd, Buffalo, NY 14228</p>
+            </div>
+            <div class="place-card" id="place-2" data-address="2002 Annapolis Mall Rd, Annapolis, MD 21401">
+                <div class="place-media">
+                    <img src="PicturesFebProject/IMG_5186.jpg" alt="Location 2" />
+                    <iframe title="Location 2 map" loading="lazy"></iframe>
+                </div>
+                <p class="place-label">2002 Annapolis Mall Rd, Annapolis, MD 21401</p>
+            </div>
+            <div class="place-card" id="place-3" data-address="5495-4071 Killian Rd, North Tonawanda, NY 14120">
+                <div class="place-media">
+                    <img src="PicturesFebProject/de2b132d-4518-4dee-a4db-3aecac791fe8.JPG" alt="Location 3" />
+                    <iframe title="Location 3 map" loading="lazy"></iframe>
+                </div>
+                <p class="place-label">5495-4071 Killian Rd, North Tonawanda, NY 14120</p>
+            </div>
+        </div>
+        <button class="music-btn" id="music-btn" type="button">Play Music 🎵</button>
         <a class="home" href="index.html">Home</a>
         <footer>Made with love by Jaspreet</footer>
     </div>
@@ -196,6 +324,58 @@
             const isHidden = letter.style.display === "" || letter.style.display === "none";
             letter.style.display = isHidden ? "block" : "none";
             letterBtn.textContent = isHidden ? "Hide Letter" : "Open Letter";
+        });
+
+        const placeButtons = document.querySelectorAll(".place-btn");
+        const placeCards = document.querySelectorAll(".place-card");
+
+        function loadMap(card) {
+            if (card.dataset.loaded === "true") return;
+            const address = card.dataset.address;
+            const iframe = card.querySelector("iframe");
+
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (!data || !data[0]) return;
+                    const lat = parseFloat(data[0].lat);
+                    const lon = parseFloat(data[0].lon);
+                    const delta = 0.02;
+                    const left = lon - delta;
+                    const right = lon + delta;
+                    const top = lat + delta;
+                    const bottom = lat - delta;
+                    const src = `https://www.openstreetmap.org/export/embed.html?bbox=${left}%2C${bottom}%2C${right}%2C${top}&layer=mapnik&marker=${lat}%2C${lon}`;
+                    iframe.src = src;
+                    card.dataset.loaded = "true";
+                })
+                .catch(() => {});
+        }
+
+        placeButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const targetId = btn.getAttribute("data-target");
+                placeCards.forEach((card) => {
+                    if (card.id === targetId) {
+                        card.classList.add("active");
+                        loadMap(card);
+                    } else {
+                        card.classList.remove("active");
+                    }
+                });
+            });
+        });
+
+        const music = document.getElementById("bg-music");
+        const musicBtn = document.getElementById("music-btn");
+        musicBtn.addEventListener("click", () => {
+            if (music.paused) {
+                music.play();
+                musicBtn.textContent = "Pause Music ⏸️";
+            } else {
+                music.pause();
+                musicBtn.textContent = "Play Music 🎵";
+            }
         });
     </script>
 </body>
