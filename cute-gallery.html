@@ -36,6 +36,18 @@
             margin: 0 0 14px;
             font-size: 36px;
         }
+        .top-bar{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .top-bar h1{
+            margin: 0;
+            flex: 1;
+            text-align: center;
+        }
         .wall{
             margin: 0 auto;
             padding: 18px;
@@ -104,7 +116,11 @@
 </head>
 <body>
     <div class="card">
-        <h1>How Cute We Are Together 📸</h1>
+        <div class="top-bar">
+            <a class="home" href="index.html">Home</a>
+            <h1>How Cute We Are Together 📸</h1>
+            <span style="width:64px;"></span>
+        </div>
         <div class="wall">
         <div class="collage">
             <img src="PicturesFebProject/FullSizeRender.png" alt="Photo" />
